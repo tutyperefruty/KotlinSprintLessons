@@ -9,10 +9,10 @@ fun main() {
     println("$heroName\'s flight time: $takeOffHour hours, and")
     println("$takeOffMinute minutes")
 
-    val landingHour = takeOffHour
     takeOffHour = "10"
-    val landingMinute = takeOffMinute
+    val landingHour = takeOffHour
     takeOffMinute = "55"
+    val landingMinute = takeOffMinute
 
     print("Landing time: $landingHour:$landingMinute")
 }
