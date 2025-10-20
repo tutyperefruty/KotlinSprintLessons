@@ -9,9 +9,8 @@ fun main() {
 
     var numbersOfEmployees = 2000
 
-    println("Numbers of Employees: $numbersOfEmployees")
+//    println("Numbers of Employees: $numbersOfEmployees")
 
-//    Представим, что один работник уволился. Создаём и инициализируем переменную увольняющихся работников в количестве 1 человека.
     val fired = 1
     var renewNumbersOfEmployees = numbersOfEmployees - fired
     println("Numbers of Employees now: $renewNumbersOfEmployees")
