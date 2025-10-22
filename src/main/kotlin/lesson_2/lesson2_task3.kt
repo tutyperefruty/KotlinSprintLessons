@@ -6,18 +6,14 @@ fun main() {
     val clockMinutes = 39
     val travelMinutes = 457
 
-    val travelHours = travelMinutes/60
-    val minutesRemain = travelMinutes % 60
+    val clockHoursToMinutesPlusClockMinutes = clockHours * STD_MIN_SEC + clockMinutes
+    val totalOnClockByMinsOnArrive = clockHoursToMinutesPlusClockMinutes + travelMinutes
+    val totalHoursOnArrive = totalOnClockByMinsOnArrive / STD_MIN_SEC
+    val totalMinsOnArrive = totalOnClockByMinsOnArrive % STD_MIN_SEC
 
-    var totalHoursOnClock = clockHours+travelHours
-    var totalMinutesOnClock = clockMinutes+minutesRemain
-    val ostatokMinut = totalMinutesOnClock % 60
-    val previsheniye = clockMinutes + minutesRemain
-
-    if (ostatokMinut > 0 && previsheniye >= 60) totalHoursOnClock +=1
-    if (previsheniye >= 60) totalMinutesOnClock -=60
-
-    val time = String.format("%02d:%02d", totalHoursOnClock, totalMinutesOnClock)
+    val time = String.format("%02d:%02d", totalHoursOnArrive, totalMinsOnArrive)
 
     println("Time on arrive: $time")
 }
+
+const val STD_MIN_SEC = 60
