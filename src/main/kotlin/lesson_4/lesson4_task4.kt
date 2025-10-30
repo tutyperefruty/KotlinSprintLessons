@@ -21,6 +21,4 @@ fun main() {
         Exercises for back:  $d_compareRemainder
     """.trimIndent())
 
-
-
 }
