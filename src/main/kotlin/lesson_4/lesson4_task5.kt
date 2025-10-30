@@ -22,11 +22,11 @@ fun main() {
     val weather: Boolean = weatherYesOrNo.toBoolean()
 //    println("OK by Weather? ${if (weather == false) "true" else "true"}")
 
-    val result = (damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum >= 50) and (if (weather == false) true else true)
-    println("\n - Can the ship set sail?\n - Answer: ${(damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum >= 50) and (if (weather == false) true else true)}")
+    val result = (damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum > 50) and (if (weather == false) true else true)
+    println("\n - Can the ship set sail?\n - Answer: ${(damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum > 50) and (if (weather == false) true else true)}")
 
     val forIf = "\n\nAlternativa:"
-    val continued = if (((damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum >= 50) and (if (weather == false) true else true)) != true) {
+    val continued = if (((damage != true) and (crewNum == 70) and (provisionBoxNum >= 50) and (weather == true)) != true) {
         println(forIf)
     } else {
         println("")
