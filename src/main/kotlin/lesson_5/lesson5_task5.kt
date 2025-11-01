@@ -3,9 +3,9 @@ package org.example.lesson_5
 import kotlin.random.Random
 
 fun main() {
-    val firstNum = Random.nextInt(0, 5)
-    val secondNum = Random.nextInt(0, 5)
-    val thirdNum = Random.nextInt(0, 5)
+    val firstNum = Random.nextInt(0, 43)
+    val secondNum = Random.nextInt(0, 43)
+    val thirdNum = Random.nextInt(0, 43)
     val lottoList = listOf(firstNum, secondNum, thirdNum)
 //    println(lottoList)
 
