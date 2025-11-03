@@ -14,12 +14,11 @@ fun main() {
     val meters = heightInput * TO_METERS
 
     val imtFofmula = weightInput / meters.toDouble().pow(2)
-//    println(imtFofmula)
 
     val result = when {
         imtFofmula < 18.5 -> "Underweight"
-        imtFofmula >= 18.5 && imtFofmula < 25.0 -> "Normal body weight"
-        imtFofmula >= 25.0 && imtFofmula < 30.0 -> "Excess body weight"
+        imtFofmula < 25.0 -> "Normal body weight"
+        imtFofmula < 30.0 -> "Excess body weight"
         imtFofmula >= 30.0 -> "Obesity"
         else -> "You are not human!"
     }
