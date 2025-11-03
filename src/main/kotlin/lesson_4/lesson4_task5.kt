@@ -1,32 +1,37 @@
 package org.example.lesson_4
 
+const val CREW_MIN = 55
+const val CREW_MAX = 70
+const val STD_CREW = CREW_MAX
+const val STD_PROV_BOX = 50
+const val IS_DAMAGES = true
+const val NO_WEATHER = false
+const val OK = true
+const val IS_SMALL_DAMAGE = true
+
 fun main() {
 
     print("Input: is Damage (yes or no): ")
     val damageYesOrNoToBool: String? = readLine()
     val damageYesOrNo = if (damageYesOrNoToBool == "yes") "true" else "false"
     val damage: Boolean = damageYesOrNo.toBoolean()
-//    println("OK by Damages? ${damage != true}")
 
     print("Input: number of crew: ")
     val crewNum: Int = readLine()!!.toInt()
-//    println("OK by number of crew? ${crewNum >= 55 && crewNum <= 70}")
 
     print("Input: number of provision box: ")
     val provisionBoxNum: Int = readLine()!!.toInt()
-//    println("OK by number of crew? ${provisionBoxNum >= 50}")
 
     print("Input: is weather (yes or no): ")
     val weatherYesOrNoToBool: String? = readLine()
     val weatherYesOrNo = if (weatherYesOrNoToBool == "yes") "true" else "false"
     val weather: Boolean = weatherYesOrNo.toBoolean()
-//    println("OK by Weather? ${if (weather == false) "true" else "true"}")
 
-    val result = (damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum > 50) and (if (weather == false) true else true)
-    println("\n - Can the ship set sail?\n - Answer: ${(damage != true) and (crewNum >= 55 && crewNum <= 70) and (provisionBoxNum > 50) and (if (weather == false) true else true)}")
+    val result = (damage != IS_DAMAGES) and (crewNum >= CREW_MIN && crewNum <= CREW_MAX) and (provisionBoxNum > STD_PROV_BOX) and (if (weather == NO_WEATHER) OK else OK)
+    println("The ship can set sail: ${(damage != IS_DAMAGES) and (crewNum >= CREW_MIN && crewNum <= CREW_MAX) and (provisionBoxNum > STD_PROV_BOX) and (if (weather == NO_WEATHER) OK else OK)}")
 
     val forIf = "\n\nAlternativa:"
-    val continued = if (((damage != true) and (crewNum == 70) and (provisionBoxNum >= 50) and (weather == true)) != true) {
+    val continued = if (((damage != IS_DAMAGES) and (crewNum == STD_CREW) and (provisionBoxNum >= STD_PROV_BOX) and (weather != NO_WEATHER)) != OK) {
         println(forIf)
     } else {
         println("")
@@ -38,6 +43,6 @@ fun main() {
             val smallDamageYesOrNo = if (smallDamageYesOrNoToBool == "yes") "true" else "false"
             val smallDamage: Boolean = smallDamageYesOrNo.toBoolean()
 //            println("OK by Damages? ${smallDamage == true}")
-            println("\n - Can the ship set sail by alternative?\n - Answer: ${(smallDamage == true) and (crewNum == 70) and (provisionBoxNum >= 50) and (weather == true)}")
+            println("The ship can set sail by alternative: ${(smallDamage == IS_SMALL_DAMAGE) and (crewNum == STD_CREW) and (provisionBoxNum >= STD_PROV_BOX) and (weather != NO_WEATHER)}")
     }
 }
