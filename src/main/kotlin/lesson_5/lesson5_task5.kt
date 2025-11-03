@@ -1,13 +1,13 @@
 package org.example.lesson_5
 
-import kotlin.random.Random
+const val RAN_MIN = 0
+const val RAN_MAX = 42
 
 fun main() {
-    val firstNum = Random.nextInt(0, 43)
-    val secondNum = Random.nextInt(0, 43)
-    val thirdNum = Random.nextInt(0, 43)
+    val firstNum = ((RAN_MIN)..(RAN_MAX)).random()
+    val secondNum = ((RAN_MIN)..(RAN_MAX)).random()
+    val thirdNum = ((RAN_MIN)..(RAN_MAX)).random()
     val lottoList = listOf(firstNum, secondNum, thirdNum)
-//    println(lottoList)
 
     println("\nInter three numbers from 0 up to 42 to check luck!\nFirst number: ")
     val firstInput = readln().toInt()
