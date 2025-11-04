@@ -20,10 +20,10 @@ fun main() {
     val crewNum: Int = readLine()!!.toInt()
 
     print("Input: number of provision box: ")
-    val provisionBoxNum: Int = readLine()!!.toInt()
+    val provisionBoxNum: Int = readln().toInt()
 
     print("Input: is weather (yes or no): ")
-    val weatherYesOrNoToBool: String? = readLine()
+    val weatherYesOrNoToBool: String? = readln()
     val weatherYesOrNo = if (weatherYesOrNoToBool == "yes") "true" else "false"
     val weather: Boolean = weatherYesOrNo.toBoolean()
 
@@ -39,10 +39,10 @@ fun main() {
 
     if (forIf == "\n\nAlternativa:" && result != true) {
             print("Input: is it small Damage (yes or no): ")
-            val smallDamageYesOrNoToBool: String? = readLine()
+            val smallDamageYesOrNoToBool: String? = readln()
             val smallDamageYesOrNo = if (smallDamageYesOrNoToBool == "yes") "true" else "false"
             val smallDamage: Boolean = smallDamageYesOrNo.toBoolean()
-//            println("OK by Damages? ${smallDamage == true}")
+
             println("The ship can set sail by alternative: ${(smallDamage == IS_SMALL_DAMAGE) and (crewNum == STD_CREW) and (provisionBoxNum >= STD_PROV_BOX) and (weather != NO_WEATHER)}")
     }
 }
