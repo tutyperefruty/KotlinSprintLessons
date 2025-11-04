@@ -9,7 +9,7 @@ fun main() {
     val thirdNum = ((RAN_MIN)..(RAN_MAX)).random()
     val lottoList = listOf(firstNum, secondNum, thirdNum)
 
-    println("\nInter three numbers from 0 up to 42 to check luck!\nFirst number: ")
+    println("\nInter three numbers from ${RAN_MIN} up to ${RAN_MAX} to check luck!\nFirst number: ")
     val firstInput = readln().toInt()
     println("Second number: ")
     val secondInput = readln().toInt()
