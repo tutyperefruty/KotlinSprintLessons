@@ -12,12 +12,12 @@ const val IS_SMALL_DAMAGE = true
 fun main() {
 
     print("Input: is Damage (yes or no): ")
-    val damageYesOrNoToBool: String? = readLine()
+    val damageYesOrNoToBool: String? = readln()
     val damageYesOrNo = if (damageYesOrNoToBool == "yes") "true" else "false"
     val damage: Boolean = damageYesOrNo.toBoolean()
 
     print("Input: number of crew: ")
-    val crewNum: Int = readLine()!!.toInt()
+    val crewNum: Int = readln().toInt()
 
     print("Input: number of provision box: ")
     val provisionBoxNum: Int = readln().toInt()
