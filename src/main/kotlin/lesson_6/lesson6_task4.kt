@@ -9,7 +9,7 @@ fun main() {
     val ranList = ((MIN_NUM)..(MAX_NUM)).random()
 
     do {
-        println("\nInput any one number from 1 to 9: ")
+        println("\nInput any one number from ${MIN_NUM} to ${MAX_NUM}: ")
         val inputNum = readln().toInt()
 
         if (inputNum == ranList) {
