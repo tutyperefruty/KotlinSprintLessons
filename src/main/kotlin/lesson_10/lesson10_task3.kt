@@ -1,22 +1,23 @@
 package org.example.lesson_10
 
 const val RANGE_FROM = 1
-const val MIN_NUM = 0
-const val MAX_NUM = 9
 
 fun main() {
     println("Length of password: ")
-    val passLengthInput = readln().toInt()
-    generatePass(vhodnayaDlina = passLengthInput)
+    println(generatePass(readln().toInt()))
 }
 
-fun generatePass(vhodnayaDlina: Int) {
-    val specList = listOf("!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "_")
+fun generatePass(vhodnayaDlina: Int): String {
+    val minNum = 0
+    val maxNum = 9
+    val minSpec = 0x20
+    val maxSpec = 0x2F
+    val oneWord = StringBuilder()
     for (output in RANGE_FROM..vhodnayaDlina) {
-        val passInt = (MIN_NUM..MAX_NUM).random()
-        val passSpec = specList.random()
+        val passInt = (minNum..maxNum).random()
+        val passSpec = (minSpec..maxSpec).random().toChar()
         val finRandom = listOf(passInt, passSpec).random()
-        print(finRandom)
+        oneWord.append(finRandom)
     }
-    return
+    return oneWord.toString()
 }
