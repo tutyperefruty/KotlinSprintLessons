@@ -16,33 +16,19 @@ class User2(
     val login: String,
     var password: String,
     val eMail: String,
-    var bio: String = "Like Kotlin"
+    var bio: String = "Like Kotlin",
 ) {
     fun outputInfoAboutUser() {
         println("User with id ${id}: login - ${login}, password - ${password}, e-mail - ${eMail}, bio - ${bio}.")
     }
 
-    fun changeBioParam() {
-        println("Enter your Bio: ")
-        bio = readln()
+    fun changeBioParam(newBio: String) {
+        bio = newBio
     }
 
-    fun changePassword(): String? {
-        println("Enter present Password to change it: ")
-        val presentPass = readln()
-        if (presentPass != password) {
-            println("Invalid Password input")
-            return null
-        } else {
-            println("Enter new Password to change it: ")
-            val newPass = readln()
-            if (newPass.isEmpty()) {
-                println("Invalid Password input")
-                return null
-            }
-            password = newPass
-            println("Password was changed to ${password}")
-        }
+    fun changePassword(newPass: String): String {
+        password = newPass
+        println("Password was changed to ${password}")
         return ""
     }
 }
@@ -54,8 +40,10 @@ fun main() {
     userDima.outputInfoAboutUser()
     userLisa.outputInfoAboutUser()
 
-    val userKit: User2 = User2(3, "Kit", "p", "ocean-kasatka@hotmail.com")
+    val userKit: User2 = User2(3, "Kit", "p", "ocean-kasatka@hotmail.com", "Yes")
     userKit.outputInfoAboutUser()
-    userKit.changePassword()
+    userKit.changePassword("shlyapa")
+    userKit.changeBioParam("Like coding")
+    userKit.outputInfoAboutUser()
 
 }
