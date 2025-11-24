@@ -15,10 +15,6 @@ class Room(
     var coverImage: String = "...no Cover...",
     var membersList: MutableList<Member> = mutableListOf(),
 ) {
-    fun addMember(himOrHer: Member) {
-        membersList.add(himOrHer)
-    }
-
     fun updateMemberStatusFindByName(name: String, newStatus: String) {
         val findMember: Member? = membersList.find { it.name == name }
         findMember?.updateStatus(newStatus)
@@ -29,12 +25,20 @@ class Room(
             println("(Avatar: ${it.avatar}) --- on long click---> Shows nik: ${it.name} --and shows--> Status: ${it.status}")
         }
     }
+    fun addMember(himOrHer: Member) {
+        val exists = membersList.any { it.name == himOrHer.name }
+        if (!exists) {
+            membersList.add(himOrHer)
+        } else {
+            println("Member with name \"${himOrHer.name}\" already exists.")
+        }
+    }
 }
 
 fun main() {
     val member_1: Member = Member(name = "Alya", avatar = "avatar1.png")
     val member_2: Member = Member(name = "Balya", avatar = "avatar2.png")
-    val member_3: Member = Member()
+    val member_3: Member = Member("Alya")
 
     val roomForSpeaking: Room = Room("For Speaking", "room_cover.png")
 
