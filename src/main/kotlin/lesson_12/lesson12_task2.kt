@@ -1,9 +1,9 @@
 package org.example.lesson_12
 
 class OneDayWeather(
-    var dayTemper: Int = 10,
-    var nightTemper: Int = 5,
-    var precipitation: Boolean = false,
+    var dayTemper: Int,
+    var nightTemper: Int,
+    var precipitation: Boolean,
 ) {
     fun printByOne() {
         return println("Day temperature is: ${dayTemper}°C, Night temperature is: ${nightTemper}°C, Precipitation is: ${if (precipitation) "Yes" else "No"}")
