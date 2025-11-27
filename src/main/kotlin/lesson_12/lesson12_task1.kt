@@ -1,6 +1,6 @@
 package org.example.lesson_12
 
-class OneDayWeather constructor() {
+class OneDayWeather {
     var dayTemper: Int = 10
     var nightTemper: Int = 5
     var precipitation: Boolean = false
