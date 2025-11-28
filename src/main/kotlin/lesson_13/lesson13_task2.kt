@@ -9,3 +9,8 @@ class TelBookContact(
         println("- Name: $name\n- Number: $number\n- Company: ${company ?: "Not specified"}")
     }
 }
+
+fun main() {
+    val contact1: TelBook = TelBook("Alya", 9876543210, "Gug")
+    contact1.printInfo()
+}
