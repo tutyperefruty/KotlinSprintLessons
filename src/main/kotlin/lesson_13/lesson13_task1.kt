@@ -1,14 +1,5 @@
 package org.example.lesson_13
 
-class TelBook(val name: String, val number: Long) {
+class TelBookContact(val name: String, val number: Long, val company: String?) {
 
-    var company: String? = null
-
-    constructor(
-        name: String,
-        number: Long,
-        company: String?,
-    ) : this(name, number) {
-        this.company = company
-    }
 }
