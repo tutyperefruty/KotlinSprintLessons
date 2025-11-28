@@ -18,7 +18,6 @@ class TelBook(val name: String, val number: Long,) {
 }
 
 fun main() {
-
     val contact1: TelBook = TelBook("Alya", 9876543210, "Gugyyyy")
     contact1.printInfo()
 
