@@ -1,6 +1,6 @@
 package org.example.lesson_13
 
-class TelBookContact(val name: String, val number: Long, val company: String? = "null")
+class TelBookContact(val name: String, val number: Long, val company: String? = null)
 
 fun main() {
 
@@ -12,6 +12,6 @@ fun main() {
         TelBookContact("Ealya", 510927903, null)
     )
 
-    val fullContacts = book.map { it.company }.filter { it != null.toString() && it != null }.joinToString()
+    val fullContacts = book.mapNotNull { it.company }.toSet().joinToString()
     println("All existing companies list: $fullContacts.")
 }
