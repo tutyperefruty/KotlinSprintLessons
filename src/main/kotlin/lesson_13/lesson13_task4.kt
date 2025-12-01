@@ -1,8 +1,8 @@
 package org.example.lesson_13
 
 class Contact(val name: String, val phoneNumber: Long, val company: String?) {
-    fun getContactInfo() {
-        println("Next contact was created: Name - $name, Phone number - $phoneNumber, Company - $company.")
+    fun printContactInfo() {
+        println("Next contact was created: Name - $name, Phone number - $phoneNumber, Company - ${company ?: "Not specified"}.")
     }
 }
 
@@ -29,14 +29,13 @@ fun main() {
         val contact = Contact(inputName, inputPhoneNumber, inputCompany)
         contactsList.add(contact)
 
-        contact.getContactInfo()
+        contact.printContactInfo()
 
         println("Would you like to add one more contact?")
-        val continueOrNot = readln().lowercase().let { if (it != "yes") break }
-
+        if (readln().lowercase() != "yes") break
     }
 
     var firstContact: Int = 1
     println("Full list of Contacts:")
-    contactsList.forEach { println("Contact ${firstContact++}: ${it.name}, ${it.phoneNumber}, ${it.company}.") }
+    contactsList.forEachIndexed { index, contact -> println("Contact ${index + 1}: ${contact.name}, ${contact.phoneNumber}, ${contact.company}.") }
 }
