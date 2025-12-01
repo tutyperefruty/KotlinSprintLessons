@@ -12,8 +12,9 @@ fun main() {
     if (inputPhoneNumber.isNotEmpty()) {
         try {
             inputPhoneNumber.toLong()
-        } catch (e: Exception) {
+        } catch (e: NumberFormatException) {
             println("Catch ERROR name: ${e::class.simpleName}")
+            return
         }
         inputPhoneNumber = inputPhoneNumber.toLong().toString()
     } else {
