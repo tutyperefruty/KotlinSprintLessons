@@ -1,8 +1,8 @@
 package org.example.lesson_13
 
-class Contact(val name: String, val phoneNumber: Long, val company: String?) {
+class Contact(val name: String, val phoneNum: Long, val company: String?) {
     fun printContactInfo() {
-        println("Next contact was created: Name - $name, Phone number - $phoneNumber, Company - ${company ?: "Not specified"}.")
+        println("Next contact was created: Name - $name, Phone number - $phoneNum, Company - ${company ?: "Not specified"}.")
     }
 }
 
@@ -35,7 +35,8 @@ fun main() {
         if (readln().lowercase() != "yes") break
     }
 
-    var firstContact: Int = 1
     println("Full list of Contacts:")
-    contactsList.forEachIndexed { index, contact -> println("Contact ${index + 1}: ${contact.name}, ${contact.phoneNumber}, ${contact.company}.") }
+    contactsList.forEachIndexed { index, contact ->
+        println("Contact ${index + 1}: ${contact.name}, ${contact.phoneNum}, ${contact.company}.")
+    }
 }
