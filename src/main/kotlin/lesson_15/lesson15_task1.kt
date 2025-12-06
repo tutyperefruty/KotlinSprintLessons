@@ -14,12 +14,18 @@ abstract class Entity : Swimmable, Flyable {
     override fun canFly() = println("$name flies")
 }
 
-class Carp(override val name: String) : Entity()
-class Gull(override val name: String) : Entity()
-class Duck(override val name: String) : Entity()
+class Carp(override val name: String) : Entity(), Swimmable
+
+class Gull(override val name: String) : Entity(), Swimmable, Flyable
+
+class Duck(override val name: String) : Entity(), Swimmable, Flyable
 
 fun main() {
-    val carp: Carp = Carp("Carp-01").apply { canSwim() }
-    val gull1: Gull = Gull("Gull-01").apply { canSwim(); canFly() }
-    val duck1: Duck = Duck("Duck-01").apply { canFly(); canSwim() }
+
+    val entieties: MutableList<Entity> = mutableListOf()
+    with(entieties) {
+        Carp("Carp-01").apply { canSwim() }
+        Gull("Gull-01").apply { canSwim(); canFly() }
+        Duck("Duck-01").apply { canFly(); canSwim() }
+    }
 }
