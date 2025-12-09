@@ -1,6 +1,6 @@
 package org.example.lesson_15
 
-const val NAME = "01"
+const val NAME = "001"
 const val CURRENT = 0
 const val MAX_PASS_TRUCK = 1
 const val MAX_CARGO_TRUCK = 2
