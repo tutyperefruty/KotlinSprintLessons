@@ -32,7 +32,7 @@ class Truck(
 
     override fun move() = println("Truck-$name moves")
 
-    override fun moveBack() = println("Truck-$name returns")
+    override fun moveBack() = println("Truck-$name returns back")
 
     override fun loadPassengers(value: Int?) {
         if (value != null) {
