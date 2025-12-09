@@ -1,10 +1,11 @@
 package org.example.lesson_16
 
-import kotlin.random.Random
+const val FROM = 1
+const val TO = 6
 
 class Dice {
 
-    private val sideValue: Int = Random.nextInt(1, 7)
+    private val sideValue: Int = (FROM..TO).random()
 
     fun showNumber() {
         println("Your number is $sideValue, Congratulations!")
