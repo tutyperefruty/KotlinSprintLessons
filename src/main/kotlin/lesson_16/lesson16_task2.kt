@@ -11,7 +11,7 @@ class Circle(private val radius: Double) {
 
 fun main() {
 
-    val circle = Circle(7.0).apply {
+    val circle = Circle(7.2).apply {
         circumference()
         area()
     }
