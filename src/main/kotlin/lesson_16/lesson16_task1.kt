@@ -15,6 +15,5 @@ class Dice {
 fun main() {
 
     val dice = Dice()
-
     dice.showNumber()
 }
