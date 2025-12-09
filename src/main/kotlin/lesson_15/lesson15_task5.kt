@@ -1,8 +1,5 @@
 package org.example.lesson_15
 
-const val NAME = "001"
-const val CURRENT = 0
-
 interface Transportable {
 
     fun move() = println("${this::class.simpleName} moves")
@@ -21,13 +18,9 @@ interface CargoTransport : Transportable {
     fun unloadCargo(value: Int? = null) = println("$value ton(s) was unloaded to ${this::class.simpleName}")
 }
 
-class Truck(
-    private val name: String = NAME,
-    private var currentPassengers: Int = CURRENT,
-    private var currentCargo: Int = CURRENT
-) : PassengerTransport, CargoTransport
+class Truck : PassengerTransport, CargoTransport
 
-class Car(private val name: String = NAME, private var currentPassengers: Int = CURRENT) : PassengerTransport
+class Car : PassengerTransport
 
 fun main() {
 
