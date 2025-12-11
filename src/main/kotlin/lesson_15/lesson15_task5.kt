@@ -11,13 +11,16 @@ interface PassengerTransport : Transportable {
     val maxPassengers: Int
     var currentPassengers: Int
     fun loadPassengers(value: Int? = maxPassengers) {
-        currentPassengers = (currentPassengers + value!!).coerceAtMost(value)
+        currentPassengers = (currentPassengers + value!!).coerceAtMost(maxPassengers)
         println("$currentPassengers Passenger(s) was loaded to ${this::class.simpleName}")
     }
 
-    fun unloadPassengers(value: Int? = maxPassengers) {
-        currentPassengers = (currentPassengers + value!!).coerceAtMost(value)
-        println("$currentPassengers Passenger(s) was unloaded to ${this::class.simpleName}")
+    fun unloadPassengers(value: Int? = currentPassengers) {
+        println(
+            "${if ((currentPassengers - value!!) >= 0) value else currentPassengers}" +
+                    " Passenger(s) was unloaded from ${this::class.simpleName}"
+        )
+        currentPassengers = 0
     }
 }
 
@@ -26,13 +29,16 @@ interface CargoTransport : Transportable {
     val maxCargo: Int
     var currentCargo: Int
     fun loadCargo(value: Int? = maxCargo) {
-        currentCargo = (currentCargo + value!!).coerceAtMost(value)
-        println("$currentCargo ton(s) was loaded to ${this::class.simpleName}")
+        currentCargo = (currentCargo + value!!).coerceAtMost(maxCargo)
+        println("$value ton(s) was loaded to ${this::class.simpleName}")
     }
 
-    fun unloadCargo(value: Int? = maxCargo) {
-        currentCargo = (currentCargo + value!!).coerceAtMost(value)
-        println("$currentCargo ton(s) was unloaded to ${this::class.simpleName}")
+    fun unloadCargo(value: Int? = currentCargo) {
+        println(
+            "${if ((currentCargo - value!!) >= 0) value else currentCargo}" +
+                    " Passenger(s) was unloaded from ${this::class.simpleName}"
+        )
+        currentCargo = 0
     }
 }
 
@@ -60,7 +66,7 @@ fun main() {
         move()
         unloadPassengers()
         moveBack()
-        loadPassengers(2)
+        loadPassengers(3)
         move()
         unloadPassengers(2)
     }
