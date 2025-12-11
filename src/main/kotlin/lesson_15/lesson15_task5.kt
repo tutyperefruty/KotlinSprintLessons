@@ -1,99 +1,61 @@
 package org.example.lesson_15
 
-const val NAME = "01"
-const val CURRENT = 0
-const val MAX_PASS_TRUCK = 1
-const val MAX_CARGO_TRUCK = 2
-const val MAX_PASS_CAR = 3
-
 interface Transportable {
-    fun move()
-    fun moveBack()
+
+    fun move() = println("${this::class.simpleName} moves")
+    fun moveBack() = println("${this::class.simpleName} returns")
 }
 
 interface PassengerTransport : Transportable {
-    fun loadPassengers(value: Int? = null)
-    fun unloadPassengers()
+
+    val maxPassengers: Int
+    var currentPassengers: Int
+    var movedPassengers: Int
+    fun loadPassengers(value: Int = maxPassengers) {
+        currentPassengers = (currentPassengers + value).coerceAtMost(maxPassengers)
+        println("$currentPassengers Passenger(s) was loaded to ${this::class.simpleName}")
+    }
+
+    fun unloadPassengers(value: Int = currentPassengers) {
+        println("${value} Passenger(s) was unloaded from ${this::class.simpleName}")
+        currentPassengers = (currentPassengers - value).coerceAtLeast(0)
+        movedPassengers += value
+    }
+
+    fun getTotalMovedPassengers(): Int {
+        return movedPassengers
+    }
+
 }
 
 interface CargoTransport : Transportable {
-    fun loadCargo(value: Int? = null)
-    fun unloadCargo()
+
+    val maxCargo: Int
+    var currentCargo: Int
+    fun loadCargo(value: Int = maxCargo) {
+        currentCargo = (currentCargo + value).coerceAtMost(maxCargo)
+        println("$value ton(s) was loaded to ${this::class.simpleName}")
+    }
+
+    fun unloadCargo(value: Int = currentCargo) {
+        currentCargo = (currentCargo - value).coerceAtLeast(0)
+        println("${value} ton(s) was unloaded from ${this::class.simpleName}")
+    }
 }
 
 class Truck(
-    private val name: String = NAME,
-    private var currentPassengers: Int = CURRENT,
-    private var currentCargo: Int = CURRENT
-) : PassengerTransport, CargoTransport {
+    override var currentPassengers: Int = 0,
+    override val maxPassengers: Int = 1,
+    override var currentCargo: Int = 0,
+    override val maxCargo: Int = 2,
+    override var movedPassengers: Int = 0,
+) : PassengerTransport, CargoTransport
 
-    private var maxPassengers = MAX_PASS_TRUCK
-    private var maxCargo = MAX_CARGO_TRUCK
-
-    override fun move() = println("Truck-$name moves")
-
-    override fun moveBack() = println("Truck-$name returns")
-
-    override fun loadPassengers(value: Int?) {
-        if (value != null) {
-            this.maxPassengers = value
-        }
-        while (currentPassengers < maxPassengers) {
-            currentPassengers++
-            println("1 Passenger was loaded to truck-$name")
-        }
-    }
-
-    override fun unloadPassengers() {
-        while (currentPassengers > CURRENT) {
-            currentPassengers--
-            println("1 Passenger was unloaded from truck-$name")
-        }
-    }
-
-    override fun loadCargo(value: Int?) {
-        if (value != null) {
-            this.maxCargo = value
-        }
-        while (currentCargo < maxCargo) {
-            currentCargo++
-            println("Loaded 1 ton to truck-$name")
-        }
-    }
-
-    override fun unloadCargo() {
-        while (currentCargo > CURRENT) {
-            currentCargo--
-            println("Unloaded 1 ton from truck-$name")
-        }
-    }
-}
-
-class Car(private val name: String = NAME, private var currentPassengers: Int = CURRENT) : PassengerTransport {
-
-    private var maxPassengers = MAX_PASS_CAR
-
-    override fun move() = println("Car-$name moves")
-
-    override fun moveBack() = println("Car-$name returns")
-
-    override fun loadPassengers(value: Int?) {
-        if (value != null) {
-            this.maxPassengers = value
-        }
-        while (currentPassengers < maxPassengers) {
-            currentPassengers++
-            println("1 Passenger was loaded to Car-$name")
-        }
-    }
-
-    override fun unloadPassengers() {
-        while (currentPassengers > CURRENT) {
-            currentPassengers--
-            println("1 Passenger was unloaded from car-$name")
-        }
-    }
-}
+class Car(
+    override var currentPassengers: Int = 0,
+    override val maxPassengers: Int = 3,
+    override var movedPassengers: Int = 0,
+) : PassengerTransport
 
 fun main() {
 
@@ -116,4 +78,6 @@ fun main() {
         move()
         unloadPassengers()
     }
+
+    println("Total passengers moved: ${truck01.getTotalMovedPassengers() + car01.getTotalMovedPassengers()}")
 }
