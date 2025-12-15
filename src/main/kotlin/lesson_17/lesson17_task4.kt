@@ -12,10 +12,6 @@ data class Package(private val packageNumber: Int, private var _currentPosition:
         set(value) {
             _currentPosition = value
             positionCount++
-            println(_currentPosition)
-            if (positionCount > 1) {
-                println("${this::class.simpleName}-${packageNumber} position was changed $positionCount times")
-            }
         }
 }
 
@@ -26,6 +22,7 @@ fun main() {
         currentPosition = "Station 7"
         currentPosition = "Station 99"
         currentPosition = "Client"
+        println("Position was changed $positionCount times")
     }
 
 }
