@@ -6,7 +6,7 @@ data class Folder(private val _name: String, private val _files: Int, private va
         get() = _isSecret
 
     val name: String
-        get() = if (isSecret) "Hidden folder" else "Folder name: '$_name'"
+        get() = if (isSecret) "Hidden folder" else _name
 
     val files: Int
         get() = if (isSecret) 0 else _files
