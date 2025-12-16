@@ -4,7 +4,7 @@ const val FROM = 1
 
 abstract class Dice {
     abstract val sides: Int
-    open fun rollDice() = println("${(FROM..sides).random()}")
+    fun rollDice() = println("${(FROM..sides).random()}")
 }
 
 class Dice4 : Dice() {
@@ -24,7 +24,7 @@ fun main() {
     val dice6: Dice = Dice6()
     val dice8: Dice = Dice8()
 
-    val dices: Array<Dice> = arrayOf(dice4, dice6, dice8)
+    val dices: List<Dice> = listOf(dice4, dice6, dice8)
     dices.forEach {
         it.rollDice()
     }
