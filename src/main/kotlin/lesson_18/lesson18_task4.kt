@@ -1,22 +1,24 @@
 package org.example.lesson_18
 
-abstract class Box {
-    abstract fun calculateSidesArea(): Int
+const val DOUBLE = 2
+
+abstract class Box(
+    private val length: Int,
+    private val width: Int,
+    private val height: Int,
+) {
+    fun calculateSidesArea(): Int = DOUBLE * (length * width + length * height + height * width)
 }
 
-class RectangleBox(
-    private val length: Int,
-    val width: Int,
-    val height: Int,
-) : Box() {
-    override fun calculateSidesArea(): Int = 2 * (length * width + length * height + height * width)
-}
+open class RectangleBox(
+    length: Int,
+    width: Int,
+    height: Int,
+) : Box(length, width, height)
 
 class Cube(
-    private val length: Int,
-) : Box() {
-    override fun calculateSidesArea(): Int = 6 * length * length
-}
+    cubeLength: Int,
+) : RectangleBox(length = cubeLength, width = cubeLength, height = cubeLength)
 
 fun main() {
     val boxList: List<Box> = listOf(
@@ -24,5 +26,5 @@ fun main() {
         Cube(3),
         RectangleBox(1, 4, 5),
     )
-        .also { boxes -> boxes.forEach { box -> println(box.calculateSidesArea()) } }
+    boxList.forEach { println(it.calculateSidesArea()) }
 }
