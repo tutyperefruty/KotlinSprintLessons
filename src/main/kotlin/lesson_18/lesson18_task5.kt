@@ -13,7 +13,8 @@ class Screen {
     fun drawPoint(name: String, x: Float, y: Float) = println(showInfo(name, x, y))
 }
 
-fun showInfo(name: String, x: Any, y: Any) = "$name $WAS_DROWN_IN x = $x, y = $y"
+fun showInfo(name: String, x: Int, y: Int) = "$name $WAS_DROWN_IN x = $x, y = $y"
+fun showInfo(name: String, x: Float, y: Float) = "$name $WAS_DROWN_IN x = $x, y = $y"
 
 fun main() {
     val myScreen: Screen = Screen()
