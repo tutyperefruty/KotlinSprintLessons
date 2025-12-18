@@ -24,10 +24,8 @@ fun main() {
     with(myScreen) {
         println(drawSquare(2, 3))
         println(drawSquare(2.3f, 3.5f))
-        println()
         println(drawCircle(3, 4))
         println(drawCircle(3.9f, 1.3f))
-        println()
         println(drawPoint(1, 0))
         println(drawPoint(5.1f, 7.3f))
     }
