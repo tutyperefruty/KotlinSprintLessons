@@ -5,20 +5,25 @@ enum class Category {
     STATIONERY,
     OTHERS;
 
-    fun showCategory(): String = name
+    fun showCategory() =
+        when (this) {
+            CLOTHING -> "Clothing"
+            STATIONERY -> "Stationary"
+            OTHERS -> "Others"
+        }
 }
 
-data class Product(
+class Product(
     private val name: String,
     private val category: Category,
 ) {
     companion object {
-        var nextID = 1
+        var nextId = 1
     }
-    var iD = nextID++
+    var id = nextId++
 
     fun showInfo() {
-        println("$name (id:$iD) [${category.showCategory()}]")
+        println("$name (id:$id) [${category.showCategory()}]")
     }
 }
 
@@ -27,7 +32,8 @@ fun main() {
     val pen = Product("Pen", Category.STATIONERY)
     val hatuba = Product("Hatuba", Category.OTHERS)
 
-    skirt.showInfo()
-    pen.showInfo()
-    hatuba.showInfo()
+    val list: List<Product> = listOf(skirt, pen, hatuba)
+    for (product in list) {
+        product.showInfo()
+    }
 }
