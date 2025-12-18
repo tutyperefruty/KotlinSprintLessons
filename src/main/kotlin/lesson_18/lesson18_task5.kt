@@ -1,31 +1,34 @@
 package org.example.lesson_18
 
-const val WAS_DROWN_IN = "was drawn in coordinates"
+const val SQUARE = "Square"
+const val CIRCLE = "Circle"
+const val POINT = "Point"
+const val WAS_DRAWN_IN = "was drawn in coordinates"
 
 class Screen {
-    fun drawSquare(name: String, x: Int, y: Int) = println(showInfo(name, x, y))
-    fun drawSquare(name: String, x: Float, y: Float) = println(showInfo(name, x, y))
+    fun drawSquare(x: Int, y: Int) = "$SQUARE ${showInfo(x, y)}"
+    fun drawSquare(x: Float, y: Float) = "$SQUARE ${showInfo(x, y)}"
 
-    fun drawCircle(name: String, x: Int, y: Int) = println(showInfo(name, x, y))
-    fun drawCircle(name: String, x: Float, y: Float) = println(showInfo(name, x, y))
+    fun drawCircle(x: Int, y: Int) = "$CIRCLE ${showInfo(x, y)}"
+    fun drawCircle(x: Float, y: Float) = "$CIRCLE ${showInfo(x, y)}"
 
-    fun drawPoint(name: String, x: Int, y: Int) = println(showInfo(name, x, y))
-    fun drawPoint(name: String, x: Float, y: Float) = println(showInfo(name, x, y))
+    fun drawPoint(x: Int, y: Int) = "$POINT ${showInfo(x, y)}"
+    fun drawPoint(x: Float, y: Float) = "$POINT ${showInfo(x, y)}"
 }
 
-fun showInfo(name: String, x: Int, y: Int) = "$name $WAS_DROWN_IN x = $x, y = $y"
-fun showInfo(name: String, x: Float, y: Float) = "$name $WAS_DROWN_IN x = $x, y = $y"
+fun showInfo(x: Int, y: Int) = "$WAS_DRAWN_IN x = $x, y = $y"
+fun showInfo(x: Float, y: Float) = "$WAS_DRAWN_IN x = $x, y = $y"
 
 fun main() {
     val myScreen: Screen = Screen()
     with(myScreen) {
-        drawSquare("Square", 2, 3)
-        drawSquare("Square", 2.3f, 3.5f)
+        println(drawSquare(2, 3))
+        println(drawSquare(2.3f, 3.5f))
         println()
-        drawCircle("Circle", 3, 4)
-        drawCircle("Circle", 3.9f, 1.3f)
+        println(drawCircle(3, 4))
+        println(drawCircle(3.9f, 1.3f))
         println()
-        drawPoint("Point",1, 0)
-        drawPoint("Point", 5.1f, 7.3f)
+        println(drawPoint(1, 0))
+        println(drawPoint(5.1f, 7.3f))
     }
 }
