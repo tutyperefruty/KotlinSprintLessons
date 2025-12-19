@@ -1,32 +1,16 @@
 package org.example.lesson_19
 
-enum class Bullet(val power: Int? = null) { BLUE(5), GREEN(10), RED(20) }
+enum class Bullet(val power: Int) { BLUE(5), GREEN(10), RED(20) }
 
 class Tank {
     private var loadedBullet: Bullet? = null
 
     fun chargeBullet(bullet: Bullet? = null) {
-        loadedBullet = when (bullet) {
-            Bullet.BLUE -> {
-                println("Got ${Bullet.BLUE}"); Bullet.BLUE
-            }
-            Bullet.GREEN -> {
-                println("Got ${Bullet.GREEN}"); Bullet.GREEN
-            }
-            Bullet.RED -> {
-                println("Got ${Bullet.RED}"); Bullet.RED
-            }
-            else -> {
-                println("Nothing loaded!")
-                null
-            }
-        }
+        loadedBullet = bullet
+        println("Got $loadedBullet bullet")
     }
 
-    fun shoot() {
-        if (loadedBullet?.power != null) println("Shoooot! Damage -${loadedBullet!!.power}")
-        else println("Can't shoot by nothing!")
-    }
+    fun shoot() = loadedBullet?.power?.let { println("Shoooot! Damage -$it") } ?: println("Can't shoot by nothing!")
 }
 
 fun main() {
