@@ -1,52 +1,53 @@
 package org.example.lesson_19
 
-enum class Bullet(val power: Int) {
-    BLUE(5),
-    GREEN(10),
-    RED(20),
-    EMPTY(0) {
-        override fun showInfo() = println("Need Bullet!")
-    };
-
-    open fun showInfo() = println("Loaded ${this.name} Bullet with power of ${this.power} points")
-}
+enum class Bullet(val power: Int? = null) { BLUE(5), GREEN(10), RED(20) }
 
 class Tank {
-    private var loadedBullet: Bullet = Bullet.EMPTY
+    private var loadedBullet: Bullet? = null
 
-    fun chargeBullet(color: String? = loadedBullet.toString()) {
-        loadedBullet = when (color) {
-            Bullet.BLUE.name -> Bullet.BLUE
-            Bullet.GREEN.name -> Bullet.GREEN
-            Bullet.RED.name -> Bullet.RED
-            Bullet.EMPTY.name -> Bullet.EMPTY
+    fun chargeBullet(bullet: Bullet? = null) {
+        loadedBullet = when (bullet) {
+            Bullet.BLUE -> {
+                println("Got ${Bullet.BLUE}"); Bullet.BLUE
+            }
+            Bullet.GREEN -> {
+                println("Got ${Bullet.GREEN}"); Bullet.GREEN
+            }
+            Bullet.RED -> {
+                println("Got ${Bullet.RED}"); Bullet.RED
+            }
             else -> {
-                println("Unknown Bullet. Can't load")
-                Bullet.EMPTY
+                println("Nothing loaded!")
+                null
             }
         }
-        loadedBullet.showInfo()
     }
 
     fun shoot() {
-        when (loadedBullet) {
-            Bullet.BLUE -> println("You have inflicted ${Bullet.BLUE.power} damage points")
-            Bullet.GREEN -> println("You have inflicted ${Bullet.GREEN.power} damage points")
-            Bullet.RED -> println("You have inflicted ${Bullet.RED.power} damage points")
-            Bullet.EMPTY -> println("No Bullet loaded!")
-        }
+        if (loadedBullet?.power != null) println("Shoooot! Damage -${loadedBullet!!.power}")
+        else println("Can't shoot by nothing!")
     }
 }
 
 fun main() {
     val tank = Tank()
     with(tank) {
+        println()
         chargeBullet()
+        Thread.sleep(1500L)
         shoot()
-        chargeBullet("GREEN")
-        chargeBullet("RED")
+        Thread.sleep(1500L)
+        chargeBullet(Bullet.BLUE)
+        Thread.sleep(1500L)
         shoot()
-        chargeBullet("NUCLEAR")
+        Thread.sleep(1500L)
+        chargeBullet(Bullet.RED)
+        Thread.sleep(1500L)
         shoot()
+        Thread.sleep(1500L)
+        chargeBullet(Bullet.GREEN)
+        Thread.sleep(1500L)
+        shoot()
+        Thread.sleep(1000L)
     }
 }
