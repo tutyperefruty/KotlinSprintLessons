@@ -31,10 +31,8 @@ fun readSex(): Sex {
 }
 
 fun displayFilesList(personFilesList: MutableList<PersonFile>) {
-    if (personFilesList.size == LISTING_SIZE) {
-        personFilesList.forEachIndexed { index, file ->
-            println("${index + 1}: ${file.name} - ${file.sex}")
-        }
+    personFilesList.forEachIndexed { index, file ->
+        println("${index + 1}: ${file.name} - ${file.sex}")
     }
 }
 
