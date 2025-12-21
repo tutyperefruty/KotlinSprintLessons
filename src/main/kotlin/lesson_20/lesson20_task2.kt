@@ -12,7 +12,6 @@ class Player {
         }
     val maxHealth: Int
         get() = MAX_HEALTH
-
 }
 
 fun main() {
@@ -25,10 +24,8 @@ fun main() {
 
     println(alya.currentHealth)
     getFullHealthWithLambda(alya)
-
     alya.currentHealth = 50
     println(alya.currentHealth);
     getFullHealthWithLambda(alya)
     println(alya.currentHealth)
-
 }
