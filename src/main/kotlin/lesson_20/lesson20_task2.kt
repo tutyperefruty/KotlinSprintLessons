@@ -2,25 +2,21 @@ package org.example.lesson_20
 
 const val MAX_HEALTH = 100
 
-class Player(
-    private val _name: String,
-    private var _currentHealth: Int,
-    private val _maxHealth: Int = MAX_HEALTH
-) {
-    val name: String
-        get() = _name
-    var currentHealth: Int
-        get() = _currentHealth
+class Player {
+    val name: String = "Alya"
+        get() = field
+    var currentHealth: Int = 33
+        get() = field
         set(value) {
-            _currentHealth = value
+            field = value
         }
     val maxHealth: Int
-        get() = _maxHealth
+        get() = MAX_HEALTH
 
 }
 
 fun main() {
-    val alya = Player("Alya", 33)
+    val alya = Player()
     val getFullHealthWithLambda: (Player) -> Unit = { player: Player ->
         player.currentHealth = player.maxHealth
         println("The player '${player.name}' has been restored to health," +
