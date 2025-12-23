@@ -6,9 +6,8 @@ fun main() {
         elementsList.add("Element-${i}")
     }
 
-    val printEvenPresedWithLambda: (List<String>) -> List<Unit> = { list ->
-        list.map { element -> println("Pressed element [$element]") }
-    }
+    val printEvenWithLambdaList = elementsList.filterIndexed { index, _ -> (index + 1) % 2 == 0 }
+        .map{ element -> println("Pressed element [$element]") }
 
-    printEvenPresedWithLambda(elementsList.filterIndexed { index, _ -> (index + 1) % 2 == 0 })
+    printEvenWithLambdaList
 }
