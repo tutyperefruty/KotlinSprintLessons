@@ -9,7 +9,7 @@ class Player {
 }
 
 fun Player.isHealthy(): Boolean {
-    return if (this.currentHealth == this.maxHealth) true else false
+    return currentHealth == maxHealth
 }
 
 fun main() {
