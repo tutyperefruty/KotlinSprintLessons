@@ -1,17 +1,16 @@
 package org.example.lesson_21
 
 import java.io.File
+import kotlin.io.readText
 
 fun main() {
-    val file = File("wordToBegin.txt")
+    val file = File("existingFile.txt")
     file.writeWordToFileAtBeginning("abracadabra")
+    println(file.readText())
 }
 
 fun File.writeWordToFileAtBeginning(word: String) {
-    createNewFile()
-    writeText("Zachyotniy smailik")
     val oldContent = readText()
     val wordInLowerCase = word.lowercase()
-    writeText("$wordInLowerCase - $oldContent")
-    println(readText())
+    return this.writeText("$wordInLowerCase - $oldContent")
 }
