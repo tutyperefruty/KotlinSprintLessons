@@ -3,20 +3,21 @@ package org.example.lesson_20
 class Robot {
 
     val phrases = listOf(
-        "Me to You.",
-        "The faster, the higher!",
-        "Don't repeat yourself!",
-        "Keep it simple, stupid!",
-        "Ooo my god."
+        { "Me to You." },
+        { "The faster, the higher!" },
+        { "Don't repeat yourself!" },
+        { "Keep it simple, stupid!" },
+        { "Ooo my god." }
     )
-    var phrase = phrases.random()
+    var phraseRandomizer = phrases.random()
 
     fun say() {
-        println(phrase)
+        println(phraseRandomizer())
     }
 
     fun setModifier(modifier: (String) -> String) {
-        phrase = modifier(phrase)
+        val original = phraseRandomizer()
+        phraseRandomizer = { modifier(original) }
     }
 }
 
