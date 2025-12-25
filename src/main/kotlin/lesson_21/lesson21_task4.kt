@@ -12,5 +12,5 @@ fun main() {
 fun File.writeWordToFileAtBeginning(word: String) {
     val oldContent = readText()
     val wordInLowerCase = word.lowercase()
-    return writeText("$wordInLowerCase $oldContent")
+    this.writeText("$wordInLowerCase $oldContent")
 }
