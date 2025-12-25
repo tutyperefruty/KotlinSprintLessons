@@ -6,8 +6,13 @@ fun main() {
         elementsList.add("Element-${i}")
     }
 
-    val printEvenWithLambdaList = elementsList.filterIndexed { index, _ -> (index + 1) % 2 == 0 }
-        .map{ element -> println("Pressed element [$element]") }
+    val pressedElementList = elementsList.map { element: String ->
+        { println("Нажат элемент $element") }
+    }
 
-    printEvenWithLambdaList
+    pressedElementList.forEachIndexed { index, action ->
+        if ((index + 1) % 2 == 0) {
+            action()
+        }
+    }
 }
