@@ -15,6 +15,7 @@ fun main() {
         "Write" to 1200,
         "Fly" to 0
     )
+
     println(experience.maxCategory())
 
 }
