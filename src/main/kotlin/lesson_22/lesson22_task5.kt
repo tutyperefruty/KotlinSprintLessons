@@ -6,7 +6,7 @@ data class GalacticGuide(
     val location: String,
     val description: String,
     val eventDateTime: LocalDateTime,
-    val distanceFromEarth: Double,
+    val distanceFromEarth: Double
 )
 
 fun main() {
