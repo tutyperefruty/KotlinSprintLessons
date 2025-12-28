@@ -1,32 +1,31 @@
 package org.example.lesson_20
 
 class Robot {
-
     val phrases = listOf(
-        { "Me to You." },
-        { "The faster, the higher!" },
-        { "Don't repeat yourself!" },
-        { "Keep it simple, stupid!" },
-        { "Ooo my god." }
+        "Me to You.",
+        "The faster, the higher!",
+        "Don't repeat yourself!",
+        "Keep it simple, stupid!",
+        "Ooo my god."
     )
-    var phraseRandomizer = phrases.random()
+    private var modifier: (String) -> String = { it }
+    private val randomPhrase = phrases.random()
 
     fun say() {
-        println(phraseRandomizer())
+        println(modifier(randomPhrase))
     }
 
-    fun setModifier(modifier: (String) -> String) {
-        val original = phraseRandomizer()
-        phraseRandomizer = { modifier(original) }
+    fun setModifier(reverseModifier: (String) -> String) {
+        modifier = reverseModifier
     }
 }
 
 fun main() {
     val robot = Robot()
 
-    val modifier: (String) -> String = { it.split(" ").reversed().joinToString(" ") }
+    val reverseModifier: (String) -> String = { it.split(" ").reversed().joinToString(" ") }
 
     robot.say()
-    robot.setModifier(modifier)
+    robot.setModifier(reverseModifier)
     robot.say()
 }
