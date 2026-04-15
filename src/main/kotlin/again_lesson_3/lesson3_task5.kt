@@ -6,9 +6,9 @@ fun main() {
     val parts = input.split('-',';')
     val startPoint = parts[0]
     val nextPoint = parts[1]
-    val nos = parts[2]
+    val moveNumber = parts[2]
     println(startPoint)
     println(nextPoint)
-    println(nos)
+    println(moveNumber)
 
 }
