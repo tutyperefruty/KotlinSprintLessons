@@ -1,13 +1,10 @@
 package org.example.again_lesson_4
 
-const val ZERO = 0
-const val REMAINDER_OF_TWO = 2
-
 fun main() {
 
     val todayIsDay: Int = 5
 
-    val isEvenDay: Boolean = todayIsDay % REMAINDER_OF_TWO == ZERO
+    val isEvenDay: Boolean = todayIsDay % 2 == 0
 
     println(
         """
