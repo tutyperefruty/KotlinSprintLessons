@@ -1,6 +1,6 @@
 package org.example.again_lesson_5
 
-const val NAME = "Zaphad"
+const val NAME = "Zaphod"
 const val PASSWORD = "PanGalactic"
 
 fun main() {
@@ -13,23 +13,22 @@ fun main() {
             println("Введи пароль: ")
             val passwordInput = readln()
             when (passwordInput) {
-                PASSWORD -> println("Эх... ... Ваши данные проверены, и о, чудо, они верны... Пользователь $NAME, " +
+                PASSWORD -> println("Эх... ... Ваши данные проверены, и, о чудо, они верны... Пользователь $NAME, " +
                         "вам разрешено входить на борт корабля \"Heart of Gold\". Хотя мне всё равно...")
                 else -> {
                     println("Эх... Печаль, вам отказано...")
-                    displayRegistrationByMarvin(nameInput)
+                    return
                 }
             }
         }
-        else -> displayRegistrationByMarvin(nameInput)
+        else -> {
+            println("Эх..., $nameInput, давай зарегистрируемся. Я понимаю, имя у тебя $nameInput.\n ...")
+            val nameReg = nameInput
+            println("Вот и дошли до создания пароля... Что-ж, придумай его: ")
+            val passwordReg = readln()
+            println("Вот теперь у нас есть новый персонаж в нашем путешествии. " +
+                    "Это $nameReg с ${passwordReg.length} значным паролем")
+            return
+        }
     }
-}
-
-fun displayRegistrationByMarvin(nameInput: String) {
-    println("Эх..., $nameInput, давай зарегистрируемся. Создай имя: ")
-    val nameReg = readln()
-    println("Вот и дошли до создания пароля... Что-ж, придумай его: ")
-    val passwordReg = readln()
-    println("Вот теперь у нас есть новый персонаж в нашем путешествии. " +
-            "Это $nameReg с ${passwordReg.length} значным паролем")
 }
