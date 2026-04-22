@@ -21,11 +21,9 @@ fun main() {
     println("Input: number of provision box: ")
     val currentProvisionBoxNumber: Int = readln().toInt()
 
-    val isWeatherOkForLong: Boolean = isFavorableWeatherCondition || !isFavorableWeatherCondition
-
-    val canDepartForLong: Boolean = !hasDamage && isWeatherOkForLong &&
+    val canDepartForLong: Boolean = !hasDamage &&
             currentCrewNumber in CREW_MIN..CREW_MAX && currentProvisionBoxNumber > STD_PROVISION_BOX
-    val canDepartAlternative: Boolean = isFavorableWeatherCondition &&
+    val canDepartAlternative: Boolean = hasDamage && isFavorableWeatherCondition &&
             currentCrewNumber == STD_CREW && currentProvisionBoxNumber >= STD_PROVISION_BOX
     val canDepart: Boolean = canDepartForLong || canDepartAlternative
 
