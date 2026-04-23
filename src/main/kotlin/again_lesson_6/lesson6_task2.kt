@@ -5,10 +5,9 @@ const val MILLIS_IN_SECOND = 1000L
 fun main() {
 
     println("Give me tne number of seconds: ")
-    var secondsNumber = readln().toLong()
-    while (secondsNumber > 0) {
-        Thread.sleep(MILLIS_IN_SECOND)
-        secondsNumber--
-    }
-    println("Прошло ${secondsNumber} секунд.")
+    val secondsNumber = readln().toLong()
+
+    Thread.sleep(secondsNumber * MILLIS_IN_SECOND)
+
+    println("Прошло $secondsNumber секунд.")
 }
