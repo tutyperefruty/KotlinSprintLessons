@@ -9,7 +9,7 @@ fun main() {
     val thirdNum = (MIN_NUMBER..MAX_NUMBER).random()
     val lottoList = listOf(firstNum, secondNum, thirdNum)
 
-    println("\nВведи 3 числа от $MIN_NUMBER до $ чтобы проверить свою удачу!\nПервое число: ")
+    println("\nВведи 3 числа от $MIN_NUMBER до $MAX_NUMBER чтобы проверить свою удачу!\nПервое число: ")
     val firstInput = readln().toInt()
     println("Второе число: ")
     val secondInput = readln().toInt()
@@ -21,7 +21,7 @@ fun main() {
 
     val result = when (crossNums) {
         1 -> "Получаешь утешительный приз"
-        2 -> "Получаешь скромный приз"
+        2 -> "Получаешь крупный приз"
         3 -> "Джекпот!"
         else -> "Nothing matches"
     }
