@@ -5,7 +5,7 @@ const val MAX_NUM = 9
 
 fun main() {
 
-    var attempt: Int = 5
+    var attempt = 5
     val randomNumber = (MIN_NUM..MAX_NUM).random()
 
     while (attempt > 0) {
@@ -19,7 +19,6 @@ fun main() {
             attempt--
             if (attempt == 0) {
                 println("It was number $randomNumber")
-                break
             }
             println("Неверно, оставшееся количество попыток: $attempt")
         }
