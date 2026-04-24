@@ -8,7 +8,7 @@ fun main() {
     var attempt: Int = 5
     val randomNumber = (MIN_NUM..MAX_NUM).random()
 
-    do {
+    while (attempt > 0) {
         println("\nВведи любое число от $MIN_NUM до $MAX_NUM: ")
         val inputNumber = readln().toInt()
 
@@ -23,6 +23,5 @@ fun main() {
             }
             println("Неверно, оставшееся количество попыток: $attempt")
         }
-    } while (true)
-
+    }
 }
