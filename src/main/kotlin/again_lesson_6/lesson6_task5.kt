@@ -10,16 +10,17 @@ fun main() {
     do {
         val randomNumberOne = (MIN_NUM..MAX_NUM).random()
         val randomNumberTwo = (MIN_NUM..MAX_NUM).random()
-        println("\nРеши пример $randomNumberOne до $randomNumberTwo: ")
+        println("\nРеши пример $randomNumberOne + $randomNumberTwo: ")
         val inputNumber = readln().toInt()
 
         if (inputNumber != (randomNumberOne + randomNumberTwo)) {
             attempt--
-            if (attempt != 0) continue else println("Доступ запрещен")
+            continue
         } else {
             println("Добро пожаловать!")
-            break
+            return
         }
     } while (attempt > 0)
 
+    println("Доступ запрещен")
 }
