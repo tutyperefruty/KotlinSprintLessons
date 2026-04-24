@@ -16,10 +16,9 @@ fun main() {
         if (inputNumber != (randomNumberOne + randomNumberTwo)) {
             attempt--
             continue
-        } else {
-            println("Добро пожаловать!")
-            return
         }
+        println("Добро пожаловать!")
+        return
     } while (attempt > 0)
 
     println("Доступ запрещен")
