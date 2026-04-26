@@ -13,11 +13,8 @@ fun main() {
     val charRange = MIN_SMALL_CHAR..MAX_SMALL_CHAR
     val digitRange = MIN_NUM..MAX_NUM
 
-    for (i in PASS_FROM..PASS_TO) {
-        val nextCharOrDigit: String =
-            if (password.length % 2 == 0) charRange.random().toString() else digitRange.random().toString()
+    for (i in PASS_FROM..PASS_TO)
+        password += if (i % 2 == 0) charRange.random().toString() else digitRange.random().toString()
 
-        password += nextCharOrDigit
-    }
     println(password)
 }
