@@ -1,9 +1,8 @@
 package org.example.again_lesson_7
 
-const val RANGE_FROM = 1
 const val MIN_PASSWORD_LENGTH = 6
-const val MIN_NUM = 0
-const val MAX_NUM = 9
+const val MIN_NUM = '0'
+const val MAX_NUM = '9'
 const val MIN_SMALL_CHAR = 'a'
 const val MAX_SMALL_CHAR = 'z'
 const val MIN_BIG_CHAR = 'A'
@@ -15,18 +14,24 @@ fun main() {
     var passwordLength = readln().toInt()
     if (passwordLength < MIN_PASSWORD_LENGTH) passwordLength = MIN_PASSWORD_LENGTH
 
-    var password = ""
+    val digitToCharRange = MIN_NUM..MAX_NUM
+    val smallCharRange = MIN_SMALL_CHAR..MAX_SMALL_CHAR
+    val bigCharRange = MIN_BIG_CHAR..MAX_BIG_CHAR
+    val fullRange = digitToCharRange.toList() + smallCharRange.toList() + bigCharRange.toList()
 
-    for (i in RANGE_FROM..passwordLength) {
-        val randomSymbol: String = listOf(
-            (MIN_NUM..MAX_NUM).random().toString(),
-            (MIN_SMALL_CHAR..MAX_SMALL_CHAR).random().toString(),
-            (MIN_BIG_CHAR..MAX_BIG_CHAR).random().toString()
-        )
-            .random()
+    val symbolListForPassword = mutableListOf<Char>()
 
-        password += randomSymbol
+    (0 until passwordLength).forEachIndexed { index, _ ->
+        symbolListForPassword +=
+            when (index % 4) {
+                0 -> digitToCharRange.random()
+                1 -> smallCharRange.random()
+                2 -> bigCharRange.random()
+                else -> fullRange.random()
+            }
     }
+
+    val password = symbolListForPassword.shuffled().joinToString("")
 
     println(password)
 }
