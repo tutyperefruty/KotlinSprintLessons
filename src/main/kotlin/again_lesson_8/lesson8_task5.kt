@@ -5,9 +5,9 @@ fun main() {
     val arraySize = readln().toInt()
 
     val ingredients = Array(arraySize) { "" }
-    for (ingredient in ingredients.indices) {
-        print("Введи ингредиент ${ingredient + 1}: ")
-        ingredients[ingredient] = readln().replaceFirstChar { it.uppercase() }
+    for (i in ingredients.indices) {
+        print("Введи ингредиент ${i + 1}: ")
+        ingredients[i] = readln().replaceFirstChar { it.uppercase() }
     }
 
     println(ingredients.joinToString(", "))
