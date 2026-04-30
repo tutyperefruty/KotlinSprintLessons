@@ -9,11 +9,8 @@ fun main() {
     if (answerInput.equals("да", ignoreCase = true)) {
         println("Какой ингредиент вы хотите добавить? ")
         val newIngredient = readln()
-        if (ingredients.any { ingredient -> ingredient.equals(newIngredient, ignoreCase = true) }) {
-            println("Ингредиент '$newIngredient' содержится в списке")
-        } else {
-            ingredients.add(newIngredient)
-            println("Теперь в рецепте есть следующие ингредиенты: $ingredients")
-        }
+        ingredients.add(newIngredient)
+
+        println("Теперь в рецепте есть следующие ингредиенты: $ingredients")
     }
 }
