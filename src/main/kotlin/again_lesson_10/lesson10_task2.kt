@@ -3,7 +3,6 @@ package org.example.again_lesson_10
 const val MIN_LENGTH = 4
 
 fun main() {
-
     println("Введите логин: ")
     val newLogin = readln()
     println("введите пароль: ")
