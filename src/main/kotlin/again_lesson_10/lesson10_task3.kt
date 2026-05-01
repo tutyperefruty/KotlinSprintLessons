@@ -9,11 +9,7 @@ fun main() {
 
 fun generatePasswordWithLength(length: Int): String {
     val password = StringBuilder()
-    for (i in 1..length) {
-        val digitRandom = (0..9).random()
-        val specRandom = (0x20..0x2F).random().toChar()
-        val finalRandom = listOf(digitRandom, specRandom).random()
-        password.append(finalRandom)
-    }
+    for (i in 1..length)
+        if (i % 2 == 0) password.append((0..9).random()) else password.append((' '..'/').random())
     return password.toString()
 }
