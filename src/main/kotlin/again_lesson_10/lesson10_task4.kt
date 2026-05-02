@@ -7,27 +7,29 @@ fun main() {
     var humanWins = 0
 
     while (true) {
-        if (playRound(playerRollDice = rollDice(), computerRollDice = rollDice())) humanWins++
-        if (askForPlayAgain(humanWins)) continue else return
+        if (playRound()) humanWins++
+
+        askForPlayAgain()
+        when (readln().lowercase()) {
+            "да" -> continue
+            "нет" -> displayStatsBeforeEnd(humanWins).also { return }
+            else -> displayStatsBeforeEnd(humanWins).also { return }
+        }
     }
 }
 
-private fun askForPlayAgain(humanWins: Int): Boolean {
-    println("Хотите сыграть еще раунд? Введите Да или Нет")
-    val answer = readln()
-    if (answer.equals("да", ignoreCase = true)) return true
-    else if (answer.equals("нет", ignoreCase = true)) displayStatsBeforeEnd(humanWins).also { return false }
-    else displayStatsBeforeEnd(humanWins)
-    return false
-}
+private fun askForPlayAgain() = println("Хотите сыграть еще раунд? Введите Да или Нет")
 
-private fun displayStatsBeforeEnd(humanWins: Int) = println("Финиш\nОбщее количество побед человечества: $humanWins")
+private fun displayStatsBeforeEnd(humanWins: Int) =
+    println("Финиш\nОбщее количество побед человечества: $humanWins")
 
-private fun playRound(playerRollDice: Int, computerRollDice: Int): Boolean {
+private fun playRound(): Boolean {
 
-    displayRoundProgress(playerRollDice, computerRollDice)
+    val humanRollDice = rollDice()
+    val computerRollDice = rollDice()
+    displayRoundProgress(humanRollDice, computerRollDice)
 
-    return displayRoundResult(determineWinner(playerRollDice, computerRollDice))
+    return displayRoundResult(determineWinner(humanRollDice, computerRollDice))
 }
 
 private fun displayRoundProgress(playerRollDice: Int, computerRollDice: Int) {
