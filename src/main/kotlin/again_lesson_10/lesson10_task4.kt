@@ -10,11 +10,7 @@ fun main() {
         if (playRound()) humanWins++
 
         askForPlayAgain()
-        when (readln().lowercase()) {
-            "да" -> continue
-            "нет" -> displayStatsBeforeEnd(humanWins).also { return }
-            else -> displayStatsBeforeEnd(humanWins).also { return }
-        }
+        if (readln().equals("да", ignoreCase = true)) continue else displayStatsBeforeEnd(humanWins).also { return }
     }
 }
 
@@ -24,7 +20,6 @@ private fun displayStatsBeforeEnd(humanWins: Int) =
     println("Финиш\nОбщее количество побед человечества: $humanWins")
 
 private fun playRound(): Boolean {
-
     val humanRollDice = rollDice()
     val computerRollDice = rollDice()
     displayRoundProgress(humanRollDice, computerRollDice)
@@ -39,13 +34,12 @@ private fun displayRoundProgress(playerRollDice: Int, computerRollDice: Int) {
     )
 }
 
-private fun determineWinner(playerRollDice: Int, computerRollDice: Int): Boolean? {
-    return when {
+private fun determineWinner(playerRollDice: Int, computerRollDice: Int): Boolean? =
+    when {
         playerRollDice > computerRollDice -> true
         playerRollDice < computerRollDice -> false
         else -> null
     }
-}
 
 private fun displayRoundResult(result: Boolean?): Boolean {
     when (result) {
