@@ -9,12 +9,15 @@ fun main() {
     while (true) {
         if (playRound()) humanWins++
 
-        askForPlayAgain()
-        if (readln().equals("да", ignoreCase = true)) continue else displayStatsBeforeEnd(humanWins).also { return }
+        if (askForPlayAgain()) continue
+        else displayStatsBeforeEnd(humanWins).also { return }
     }
 }
 
-private fun askForPlayAgain() = println("Хотите сыграть еще раунд? Введите Да или Нет")
+private fun askForPlayAgain(): Boolean {
+    println("Хотите сыграть еще раунд? Введите Да или Нет")
+    return (readln().equals("да", ignoreCase = true))
+}
 
 private fun displayStatsBeforeEnd(humanWins: Int) =
     println("Финиш\nОбщее количество побед человечества: $humanWins")
